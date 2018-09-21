@@ -33,6 +33,9 @@ fn generate_baseline_cargo_package(subcmd: &NewCmd) -> Result<(), Error> {
         cmd.arg("--name").arg(&n);
     }
 
+    // Set the edition to 2015
+    cmd.arg("--edition").arg("2015");
+
     cmd.arg("--lib").arg(&subcmd.path).run_cmd()
 }
 
