@@ -15,7 +15,7 @@ Rust `no_std` library project with a few additional configuration frills.
 In that project, running `cargo fel4 build` will generate a seL4 application
 wrapping your library code from `src/lib.rs`, and `cargo fel4 simulate` will run it.
 
-Access to seL4 capabilities is presently through the [libsel4-sys library](https://github.com/PolySync/libsel4-sys),
+Access to seL4 capabilities is presently through the [libsel4-sys library](https://github.com/maindotrs/libsel4-sys),
 a thin binding layer around seL4. This wrapper is built and configured according to your
 feL4 project settings, stored in your project's `fel4.toml` manifest file.
 
@@ -33,7 +33,7 @@ language items, and of course, to Data61, et al for
 ### Dependencies
 
 `cargo-fel4` works on top of several other tools to operate, so you'll need Rust with Cargo, Xargo,
-and QEMU to build and run feL4 projects. Additionally, feL4 depends on the [libsel4-sys](https://github.com/PolySync/libsel4-sys) crate, which has its own set of dependencies. Some of the "Building" steps below are actually specific to satisfying `libsel4-sys` dependencies. `cargo-fel4` was developed using Ubuntu Xenial, but other Linux variants should work.
+and QEMU to build and run feL4 projects. Additionally, feL4 depends on the [libsel4-sys](https://github.com/maindotrs/libsel4-sys) crate, which has its own set of dependencies. Some of the "Building" steps below are actually specific to satisfying `libsel4-sys` dependencies. `cargo-fel4` was developed using Ubuntu Xenial, but other Linux variants should work.
 
 * [rust](https://github.com/rust-lang-nursery/rustup.rs) (nightly)
 * [xargo](https://github.com/japaric/xargo) (for cross-compiling)
@@ -74,7 +74,7 @@ After building, `cargo-fel4` can be installed with `cargo install`.
 
 * Install under the nightly toolchain:
   ```bash
-  cargo +nightly install --git https://github.com/PolySync/cargo-fel4.git
+  cargo +nightly install cargo-fel4
   ```
 
 ## Usage
@@ -264,8 +264,8 @@ SUBCOMMANDS:
   cargo fel4 clean
   ```
 
-  See the [fel4-config](https://github.com/PolySync/fel4-config) and
-  [libsel4-sys](https://github.com/PolySync/libsel4-sys) packages for more configuration information.
+  See the [fel4-config](https://github.com/maindotrs/fel4-config) and
+  [libsel4-sys](https://github.com/maindotrs/libsel4-sys) packages for more configuration information.
 
   See the target specifications [README](target_specs/README.md) for more information about
   the specifications shipped with cargo-fel4.
@@ -293,11 +293,5 @@ cargo test
 ```
 
 # License
-
-© 2018, PolySync Technologies, Inc.
-
-* Jon Lamb [email](mailto:jlamb@polysync.io)
-* Zack Pierce [email](mailto:zpierce@polysync.io)
-* Dan Pittman [email](mailto:dpittman@polysync.io)
 
 Please see the [LICENSE](./LICENSE) file for more details
