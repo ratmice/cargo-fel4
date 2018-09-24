@@ -1,8 +1,10 @@
 [package]
 name = "cmake_config"
 version = "0.1.0"
-publish = false
 description = "A parser for CMakeCache.txt files"
+repository = "https://github.com/maindotrs/cargo-fel4"
+homepage = "https://github.com/maindotrs/cargo-fel4"
+license-file = "../LICENSE"
 
 [dependencies]
 lazy_static = "0.1"
