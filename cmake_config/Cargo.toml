@@ -1,10 +1,12 @@
 [package]
 name = "cmake_config"
-version = "0.1.0"
+version = "0.1.1"
+authors = ["Jon Lamb <lamb.jon.io@gmail.com>", "Zachary Pierce <zachary.pierce@gmail.com>", "Dan Pittman <dan@dpitt.me>"]
 description = "A parser for CMakeCache.txt files"
 repository = "https://github.com/maindotrs/cargo-fel4"
 homepage = "https://github.com/maindotrs/cargo-fel4"
 license-file = "../LICENSE"
+readme = "../README.md"
 
 [dependencies]
 lazy_static = "0.1"
