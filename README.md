@@ -30,10 +30,8 @@ language items, and of course, to Data61, et al for
 
 ## Getting Started
 
-### Dependencies
-
 `cargo-fel4` works on top of several other tools to operate, so you'll need Rust with Cargo, Xargo,
-and QEMU to build and run feL4 projects. Additionally, feL4 depends on the [libsel4-sys](https://github.com/maindotrs/libsel4-sys) crate, which has its own set of dependencies. Some of the "Building" steps below are actually specific to satisfying `libsel4-sys` dependencies. `cargo-fel4` was developed using Ubuntu Xenial, but other Linux variants should work.
+and QEMU to build and run feL4 projects. Additionally, feL4 depends on the [libsel4-sys](https://github.com/maindotrs/libsel4-sys) crate, which has its own set of dependencies. Some of the "Building" steps below are actually specific to satisfying `libsel4-sys` dependencies. `cargo-fel4` was developed using Ubuntu Xenial, but other Linux variants should work. [WSL](https://docs.microsoft.com/en-us/windows/wsl/install-win10) also works.
 
 * [rust](https://github.com/rust-lang-nursery/rustup.rs) (nightly)
 * [xargo](https://github.com/japaric/xargo) (for cross-compiling)
@@ -41,29 +39,42 @@ and QEMU to build and run feL4 projects. Additionally, feL4 depends on the [libs
 * [qemu](https://www.qemu.org/) (for simulation)
 * [dfu-util](http://dfu-util.sourceforge.net/) (for device deployment)
 
-### Building
-
-These instructions cover installing both `libsel4-sys` and `cargo-fel4` dependencies as well as building `cargo-fel4`.
+### Dependencies
 
 * Install system package dependencies:
   ```bash
-  sudo apt-get install python-pip ninja-build libxml2-utils dfu-util curl
-  sudo apt-get install gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
-  sudo apt-get install gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
-  sudo apt-get install qemu-system-x86 qemu-system-arm
+  # Debian & Ubuntu
+  sudo apt install python-pip ninja-build libxml2-utils dfu-util curl \
+    gcc-aarch64-linux-gnu g++-aarch64-linux-gnu \
+    gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf \
+    qemu-system-x86 qemu-system-arm libclang-dev
   ```
-* Install pip package dependencies:
+* Install `pip` package dependencies:
   ```bash
-  sudo pip install cmake sel4-deps
+  # may require sudo
+  pip install sel4-deps tempita
   ```
+* Install CMake (>= v3.8.2).
+  ```bash
+  # Ubuntu
+  sudo apt install cmake
+  # Debian (may require sudo)
+  pip install cmake
+  ```
+* See the [Rust homepage](https://www.rust-lang.org/) for details on how to install Rust.
+
 * Install Rust nightly and additional components:
+
   ```bash
-  curl https://sh.rustup.rs -sSf | sh
   rustup install nightly
-  rustup component add rust-src
-  cargo install xargo
+  rustup component add rust-src --toolchain nightly
+  cargo +nightly install xargo
   ```
-* Building `cargo-fel4`:
+
+### Building
+
+From within the `cargo-fel4` directory:
+
   ```bash
   cargo build
   ```
