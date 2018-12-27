@@ -30,6 +30,6 @@ macro_rules! debug_println {
     ($fmt:expr, $($arg:tt)*) => (debug_print!(concat!($fmt, "\n"), $($arg)*));
 }
 
-pub fn run() {
+pub fn run(_bootinfo: &sel4_sys::seL4_BootInfo) {
     debug_println!("\nhello from a feL4 app!\n");
 }
