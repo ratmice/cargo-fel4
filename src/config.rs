@@ -35,8 +35,14 @@ pub enum Fel4SubCmd {
 }
 #[derive(Debug, Clone, StructOpt)]
 pub struct LoudnessOpts {
-    #[structopt(name = "verbose", long = "verbose", short = "v", help = "Use verbose output")]
-    pub verbose: bool,
+    #[structopt(
+        name = "verbose",
+        long = "verbose",
+        parse(from_occurrences),
+        short = "v",
+        help = "Use verbose output"
+    )]
+    pub verbose: u8,
     #[structopt(name = "quiet", long = "quiet", short = "q", help = "No output printed to stdout")]
     pub quiet: bool,
 }

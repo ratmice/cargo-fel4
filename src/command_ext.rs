@@ -33,7 +33,7 @@ impl CommandExt for Command {
 
     fn add_loudness_args<'c, 'f>(&'c mut self, loudness: &'f LoudnessOpts) -> &mut Self {
         self.arg_if(|| loudness.quiet, "--quiet")
-            .arg_if(|| loudness.verbose, "--verbose")
+            .args((0..loudness.verbose).map(|_: u8| "--verbose").collect::<Vec<&str>>())
     }
 
     fn run_cmd(&mut self) -> Result<(), Error> {

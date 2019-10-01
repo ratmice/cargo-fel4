@@ -58,8 +58,9 @@ fn main() {
 
 fn set_logging_level(LoudnessOpts { verbose, quiet }: &LoudnessOpts) {
     log::set_max_level(match (verbose, quiet) {
-        (true, _) => LevelFilter::Info,
-        (false, true) => LevelFilter::Off,
+        (1, _) => LevelFilter::Info,
+        (2, _) => LevelFilter::Debug,
+        (0, true) => LevelFilter::Off,
         _ => LevelFilter::Error,
     });
 }
